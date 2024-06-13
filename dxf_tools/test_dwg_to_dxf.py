@@ -1,4 +1,4 @@
-#!pip install ezdxf
+!pip install ezdxf
 # ДЛЯ ЗАПУСКА В COLAB
 import io
 import re
@@ -7,42 +7,11 @@ from ezdxf.addons import odafc
 import os
 
 
-os.environ['XDG_RUNTIME_DIR'] = '/tmp'
-!apt-get install -y xvfb ffmpeg > /dev/null 2>&1
-# Даем разрешение на выполнение файла ODAFileConverter.AppImage
-!chmod +x /content/ODAFileConverter.AppImage
-# Исправляем права доступа к /tmp
-!chmod 0700 /tmp
-#  путь к ODAFileConverter.AppImage
-odafc.unix_exec_path = "/content/ODAFileConverter.AppImage" 
-# Проверка, что ODA File Converter установлен
-if not odafc.is_installed():
-    raise odafc.ODAFCNotInstalledError("ODA File Converter не найден!")
-OUTVER = "ACAD2018"
-
-
-#Конвертирует файл DWG в DXF.
-def convert_dwg_to_dxf(input_file, output_path):
-    try:
-        doc = odafc.readfile(input_file, version=OUTVER)
-        #doc.saveas(output_path)  # тут идет сохранение на диск dxf файла
-        #print(f"Файл '{input_file}' успешно конвертирован в '{output_path}'.")
-        # Создаем объект StringIO для записи DXF данных
-        dxf_stream = io.StringIO()
-        # Записываем DXF в поток
-        doc.write(dxf_stream, fmt='asc')
-        # Перемещаем указатель в начало потока
-        dxf_stream.seek(0)
-        print(f"Файл '{input_file}' успешно конвертирован в DXF.")
-        return dxf_stream  # Возвращаем объект TextIO
-    except Exception as e:
-        print(f"Ошибка при конвертации файла '{input_file}': {e}")
-
-
 # поиск красных полилиний
 def extract_red_lines(dxf_file):
     # Читаем данные DXF из потока
-    doc = ezdxf.read(dxf_file)
+    #doc = ezdxf.read(dxf_file)  #для бинарного 
+    doc = ezdxf.readfile(dxf_file)  #для файла из хранилища
     msp = doc.modelspace()
     lwpolyline_data = []
     # Итерируемся по всем сущностям в пространстве модели
@@ -64,7 +33,8 @@ def extract_red_lines(dxf_file):
 
 # достает все сущности с их ключевыми данными
 def extract_all_entities_data(dxf_file):
-    doc = ezdxf.read(dxf_file)
+    #doc = ezdxf.read(dxf_file)  #для бинарного 
+    doc = ezdxf.readfile(dxf_file)  #для файла из хранилища
     msp = doc.modelspace()
     all_entities_data = []
     # Итерируемся по всем сущностям в пространстве модели
@@ -103,9 +73,9 @@ def find_close_vec(text_entity, entities_list):
 def get_red_line_data(file):
     # Запуск конвертации
     output_path = file[:-4] + ".dxf"
-    dxf_file = convert_dwg_to_dxf(file, output_path)
+    #dxf_file = convert_dwg_to_dxf(file, output_path)
     # получаем инфу красных границ
-    lwpolyline_data = extract_red_lines(dxf_file)
+    lwpolyline_data = extract_red_lines(file)
     return lwpolyline_data
 
 
@@ -113,9 +83,9 @@ def get_red_line_data(file):
 def get_heights_data(file):
     # Запуск конвертации
     output_path = file[:-4] + ".dxf"
-    dxf_file = convert_dwg_to_dxf(file, output_path)
+    #dxf_file = convert_dwg_to_dxf(file, output_path)
     # достает все сущности с их ключевыми данными
-    all_data = extract_all_entities_data(dxf_file)
+    all_data = extract_all_entities_data(file)
     # паттерн для поиска высот среди текста
     pattern = r"^\d+\.\d+$" 
     # получаем коориднаты высот и точек возле них
@@ -135,16 +105,8 @@ def get_heights_data(file):
 # Пример использования:
 file_path = '/content/Исходная_подоснова_с_отметками_рельефа_и_старым_корпусом.dxf'
 height_data, dots_height_data = get_heights_data(file_path)
-file_path_border = '/content/Границы участка.dwg'
+file_path_border = '/content/Границы участка.dxf'
 red_data = get_red_line_data(file_path_border)
 print(red_data)
 print(height_data)
 print(dots_height_data)
-
-
-
-
-
-
-
-
