@@ -58,6 +58,8 @@ def extract_all_entities_data(dxf_file) -> List:
 # Ищет сущность в списке, которая находится близко к текстовой сущности
 def find_close_vec(text_entity, entities_list: List):
     text_coords = text_entity['coords']  # координаты текстовой сущности
+    
+    # по всему списку ищем одну точку близко от текста
     for entity in entities_list:
         # отбираем сущности типа INSERT (обычно это точки)
         if entity['type'] == 'INSERT':
@@ -69,11 +71,8 @@ def find_close_vec(text_entity, entities_list: List):
     return None
 
 
-# 
+# для получения координат высот и координат точек рядом, если есть
 def get_heights_data(file):
-    # Запуск конвертации
-    output_path = file[:-4] + ".dxf"
-    #dxf_file = convert_dwg_to_dxf(file, output_path)
     # достает все сущности с их ключевыми данными
     all_data = extract_all_entities_data(file)
     # паттерн для поиска высот среди текста
@@ -105,6 +104,6 @@ height_data, dots_height_data = get_heights_data(file_path)
 file_path_border = '/content/Границы участка.dxf'
 red_data = extract_red_lines(file_path_border)
 
-print(red_data)
-print(height_data)
-print(dots_height_data)
+print(f"Все данные красных границ - {red_data}")
+print(f"Высоты и их координаты - {height_data}")
+print(f"Высоты и их координаты, а также координаты точек рядом с ними -  {dots_height_data}")
