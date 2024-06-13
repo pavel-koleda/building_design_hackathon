@@ -4,8 +4,11 @@ import io
 import re
 import ezdxf
 from ezdxf.addons import odafc
+import os
 
 
+os.environ['XDG_RUNTIME_DIR'] = '/tmp'
+!apt-get install -y xvfb ffmpeg > /dev/null 2>&1
 # Даем разрешение на выполнение файла ODAFileConverter.AppImage
 !chmod +x /content/ODAFileConverter.AppImage
 # Исправляем права доступа к /tmp
