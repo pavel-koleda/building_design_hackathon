@@ -11,7 +11,7 @@
 ![Alt Text](workflow_example-resize.gif)
 > **_Ограничение демонстрационной модели:_**
 >- _возможен выбор только заранее предустановленных планов территории и типовых зданий._
->- _загрузка собственных планов и моделей доступен в полнофункциональной версии приложения._
+>- _загрузка собственных планов и моделей доступна в полнофункциональной версии приложения._
 
 ## Порядок работы с приложением: 
 Для работы приложения перейдите по ссылке  [AI-Конфигуратор зданий](https://cloud.viktor.ai/public/building-design)  
@@ -37,7 +37,7 @@
 [![IFC OpenShell](https://img.shields.io/badge/IFC%20OpenShell-BIM-red)](http://ifcopenshell.org/)
   [IFC OpenShell](http://ifcopenshell.org/) - библиотека для работы с IFC файлами в BIM.  
 [![ONNX Runtime](https://img.shields.io/badge/ONNX%20Runtime-Machine%20Learning-green)](https://onnxruntime.ai/)
-  [ONNX Runtime](https://onnxruntime.ai/) - высокопроизводительная среда запуска ML-моделей. 
+  [ONNX Runtime](https://onnxruntime.ai/) - высокопроизводительная среда запуска ML-моделей.  
 [![ezdxf](https://img.shields.io/badge/ezdxf-DXF%20Files-yellow)](https://ezdxf.readthedocs.io/)
   [ezdxf](https://ezdxf.readthedocs.io/) - библиотека для работы с файлами DXF.  
 
