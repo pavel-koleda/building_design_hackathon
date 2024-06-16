@@ -33,12 +33,12 @@
 
 ## Используемые технологии и инструменты:
 [![VIKTOR](https://img.shields.io/badge/VIKTOR-Engineering%20Apps-blue)](https://www.viktor.ai/)
-  [VIKTOR](https://www.viktor.ai/) - Платформа для создания инженерных приложений.  
+  [VIKTOR](https://www.viktor.ai/) - платформа для создания инженерных приложений.  
 [![IFC OpenShell](https://img.shields.io/badge/IFC%20OpenShell-BIM-red)](http://ifcopenshell.org/)
-  [IFC OpenShell](http://ifcopenshell.org/) - Библиотека с открытым исходным кодом для работы с IFC файлами в BIM.  
+  [IFC OpenShell](http://ifcopenshell.org/) - библиотека для работы с IFC файлами в BIM.  
 [![ONNX Runtime](https://img.shields.io/badge/ONNX%20Runtime-Machine%20Learning-green)](https://onnxruntime.ai/)
-  [ONNX Runtime](https://onnxruntime.ai/) - Высокопроизводительная среда выполнения для моделей ONNX.  
+  [ONNX Runtime](https://onnxruntime.ai/) - высокопроизводительная среда запуска ML-моделей. 
 [![ezdxf](https://img.shields.io/badge/ezdxf-DXF%20Files-yellow)](https://ezdxf.readthedocs.io/)
-  [ezdxf](https://ezdxf.readthedocs.io/) - Библиотека Python для работы с файлами DXF.  
+  [ezdxf](https://ezdxf.readthedocs.io/) - библиотека для работы с файлами DXF.  
 
 
