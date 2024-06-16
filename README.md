@@ -1,4 +1,5 @@
 # Building Design  - AI-Конфигуратор размещения проектируемых зданий на заданной территории
+[![VIKTOR](https://img.shields.io/badge/VIKTOR-Engineering%20Apps-blue)](https://www.viktor.ai/)  [![IFC OpenShell](https://img.shields.io/badge/IFC%20OpenShell-BIM-red)](http://ifcopenshell.org/)  [![ONNX Runtime](https://img.shields.io/badge/ONNX%20Runtime-Machine%20Learning-green)](https://onnxruntime.ai/)  [![ezdxf](https://img.shields.io/badge/ezdxf-DXF%20Files-yellow)](https://ezdxf.readthedocs.io/)  [![Python](https://img.shields.io/badge/Python-Programming%20Language-brightgreen)](https://www.python.org/)
 ## Описание 
 Данный сервис на основе ML-подхода предназначен для автоматизация рутинных задач по выбору вариантов размещения зданий на заданной территории в процессе проектирования.
 
@@ -31,8 +32,13 @@
 `Input IFC model` - загруженная исходная типовая IFC модель.  
 
 ## Используемые технологии и инструменты:
-[VIKTOR](https://www.viktor.ai/) - Платформа для создания инженерных приложений.  
-[IFC OpenShell](http://ifcopenshell.org/) - Библиотека с открытым исходным кодом для работы с IFC файлами в BIM.  
-[ONNX Runtime](https://onnxruntime.ai/) - Высокопроизводительная среда выполнения для моделей ONNX.  
-[ezdxf](https://ezdxf.readthedocs.io/) - Библиотека Python для работы с файлами DXF.  
+[![VIKTOR](https://img.shields.io/badge/VIKTOR-Engineering%20Apps-blue)](https://www.viktor.ai/)
+  [VIKTOR](https://www.viktor.ai/) - Платформа для создания инженерных приложений.  
+[![IFC OpenShell](https://img.shields.io/badge/IFC%20OpenShell-BIM-red)](http://ifcopenshell.org/)
+  [IFC OpenShell](http://ifcopenshell.org/) - Библиотека с открытым исходным кодом для работы с IFC файлами в BIM.  
+[![ONNX Runtime](https://img.shields.io/badge/ONNX%20Runtime-Machine%20Learning-green)](https://onnxruntime.ai/)
+  [ONNX Runtime](https://onnxruntime.ai/) - Высокопроизводительная среда выполнения для моделей ONNX.  
+[![ezdxf](https://img.shields.io/badge/ezdxf-DXF%20Files-yellow)](https://ezdxf.readthedocs.io/)
+  [ezdxf](https://ezdxf.readthedocs.io/) - Библиотека Python для работы с файлами DXF.  
+
 
