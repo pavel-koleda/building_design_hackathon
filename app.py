@@ -11,7 +11,8 @@ from shapely import Polygon
 from shapely.affinity import translate
 from viktor import File, ViktorController, ParamsFromFile
 from viktor.errors import UserError, InputViolation
-from viktor.parametrization import ViktorParametrization, NumberField, Text, FileField, OptionField, OptionListElement, ActionButton
+from viktor.parametrization import (ViktorParametrization, NumberField, Text, FileField, OptionField, OptionListElement, ActionButton,
+                                    GeoPolylineField, GeoPolygonField, GeoPointField)
 from viktor.geometry import CircularExtrusion, Group, Material, Color, Point, LinearPattern, Line
 from viktor.views import GeometryView, GeometryResult, IFCView, IFCResult, ImageResult, ImageView
 from viktor.core import Storage
@@ -88,6 +89,8 @@ class Parametrization(ViktorParametrization):
                     description="Выберите из выпадающего списка необходимую модель здания", flex=80)
     building_var = OptionField("Select building variant (Выберите вариацию здания)", options=BUILDING_VAR_OPTIONS, default=BUILDING_VAR_OPTIONS[0].value,
                     description="Выберите из выпадающего списка необходимую модель здания", flex=80)
+    
+    red_line_polygon = GeoPolygonField('Add red lines to the map (Укажите границы участка на карте)', flex=80)
 
 
 class Controller(ViktorController):
@@ -226,3 +229,20 @@ class Controller(ViktorController):
         input_ifc_file = File.from_path(input_model_path)
         
         return IFCResult(input_ifc_file)
+    
+    @MapView('Map view', duration_guess=3)
+    def generate_map(self, params, **kwargs):
+        features = []
+        
+        # Draw red_lines
+        if params.red_line_polygon:
+            
+            model_path = Path(__file__).parent / 'data/ifc' / params["input_ifc_file"]
+            
+            # Extracting the building polygon from the loaded IFC model
+            building_polygon = get_building_polygon(model_path)
+            building_zone = MapPolygon([MapPoint(x, y) for x, y in building_polygon])
+            
+            features.append(building_zone)
+        
+        return MapResult(features)
